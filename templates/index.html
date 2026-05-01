@@ -335,23 +335,23 @@
 
     <!-- Hero Donors -->
     <div style="padding: 60px 10%; background: #000;">
-        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem; color: var(--primary);">Heroes of the Month</h2>
+        <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem; color: var(--primary);">Recent Life Savers</h2>
         <div style="display: flex; gap: 30px; justify-content: center; flex-wrap: wrap;">
-            <div style="text-align: center; width: 200px;">
-                <div style="width: 100px; height: 100px; background: #222; border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; font-size: 2rem; border: 2px solid var(--primary);">👤</div>
-                <h4>Rajesh Kumar</h4>
-                <p style="color: #888; font-size: 0.8rem;">15+ Donations</p>
+            {% for donor in donors %}
+            <div style="text-align: center; width: 200px; background: #111; padding: 20px; border-radius: 20px; border: 1px solid rgba(230, 57, 70, 0.2);">
+                <div style="width: 80px; height: 80px; background: var(--primary); border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; color: white; font-weight: 800; box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);">
+                    {{ donor.blood_group }}
+                </div>
+                <h4 style="color: #fff; margin-bottom: 5px;">{{ donor.name }}</h4>
+                <p style="color: #888; font-size: 0.8rem;">📍 {{ donor.location }}</p>
+                <div style="margin-top: 10px; color: var(--primary); font-size: 0.8rem; font-weight: 600;">Hero Donor</div>
             </div>
-            <div style="text-align: center; width: 200px;">
-                <div style="width: 100px; height: 100px; background: #222; border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; font-size: 2rem; border: 2px solid var(--primary);">👤</div>
-                <h4>Anjali Sharma</h4>
-                <p style="color: #888; font-size: 0.8rem;">12+ Donations</p>
-            </div>
-            <div style="text-align: center; width: 200px;">
-                <div style="width: 100px; height: 100px; background: #222; border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; font-size: 2rem; border: 2px solid var(--primary);">👤</div>
-                <h4>Suresh Babu</h4>
-                <p style="color: #888; font-size: 0.8rem;">10+ Donations</p>
-            </div>
+            {% else %}
+            <p style="color: #666;">Be the first hero to register today!</p>
+            {% endfor %}
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="/services" class="btn btn-outline" style="font-size: 0.9rem; padding: 10px 30px;">View All Donors & Register</a>
         </div>
     </div>
 
