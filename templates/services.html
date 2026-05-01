@@ -193,6 +193,33 @@
                 </form>
             </div>
         </div>
+
+        <div style="margin-top: 80px;">
+            <h2 style="font-size: 2.5rem; color: var(--primary);">Our Hero Donors</h2>
+            <p class="subtitle">Real people saving real lives. Join them today!</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; text-align: left; margin-top: 30px;">
+                {% for donor in donors %}
+                <div style="background: var(--glass); border: 1px solid rgba(255,255,255,0.1); padding: 25px; border-radius: 20px; transition: 0.3s; position: relative;">
+                    <div style="position: absolute; top: 20px; right: 20px; background: var(--primary); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);">
+                        {{ donor.blood_group }}
+                    </div>
+                    <h3 style="color: white; margin-bottom: 5px; font-size: 1.4rem;">{{ donor.name }}</h3>
+                    <div style="color: #888; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        {{ donor.location }}
+                    </div>
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--primary); font-weight: 600; font-size: 0.9rem;">
+                        Contact: {{ donor.phone }}
+                    </div>
+                </div>
+                {% else %}
+                <div style="grid-column: 1/-1; padding: 50px; background: var(--glass); border-radius: 20px; border: 1px dashed #444; color: #888;">
+                    No donors registered yet. Be the first one!
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </body>
 </html>
