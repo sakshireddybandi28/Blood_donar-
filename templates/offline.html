@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Emergency - LifeStream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        body { background: #0a0a0a; color: white; font-family: 'Inter', sans-serif; text-align: center; padding: 40px 20px; }
+        .card { background: #1a1a1a; padding: 30px; border-radius: 20px; border: 1px solid #e63946; margin-bottom: 20px; }
+        h1 { color: #e63946; font-size: 2rem; margin-bottom: 10px; }
+        p { color: #ccc; margin-bottom: 20px; }
+        .btn { display: block; padding: 15px; background: #e63946; color: white; text-decoration: none; border-radius: 10px; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+        .btn-blue { background: #007bff; }
+        .btn-green { background: #28a745; }
+        .info { font-size: 0.9rem; color: #888; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>OFFLINE MODE</h1>
+    <p>Network unavailable. Use these emergency tools:</p>
+
+    <div class="card">
+        <h3>Local Emergency Calls</h3>
+        <a href="tel:+919876543210" class="btn btn-green">📞 Call Blood Center</a>
+        <a href="tel:108" class="btn btn-green">📞 Call Ambulance (108)</a>
+    </div>
+
+    <div class="card">
+        <h3>SMS Templates</h3>
+        <a href="sms:+919876543210?body=EMERGENCY: Need Blood Type [TYPE] at [LOCATION]. Please help!" class="btn btn-blue">💬 Request Blood via SMS</a>
+        <a href="sms:+919876543210?body=DONOR: I am [NAME], Blood Group [TYPE], available for donation." class="btn btn-blue">💬 Register as Donor via SMS</a>
+    </div>
+
+    <div class="card">
+        <h3>Our Address</h3>
+        <p>SFC, Opposite Street No: 258,<br>Rajampet, Andhra Pradesh</p>
+    </div>
+
+    <div class="info">
+        This page is saved on your device and works without internet.
+    </div>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - LifeStream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --dark: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: var(--dark);
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+            padding: 120px 10% 50px;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .content-left {
+            flex: 1;
+        }
+
+        .content-left h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .content-left p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            background: var(--glass);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .animation-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Blood Drop Animation */
+        .blood-drop {
+            width: 200px;
+            height: 200px;
+            background: var(--primary);
+            border-radius: 0 50% 50% 50%;
+            transform: rotate(45deg);
+            position: relative;
+            box-shadow: 0 0 50px rgba(230, 57, 70, 0.5);
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .blood-drop::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            top: 40px;
+            left: 40px;
+        }
+
+        @keyframes pulse {
+            0% { transform: rotate(45deg) scale(1); box-shadow: 0 0 50px rgba(230, 57, 70, 0.5); }
+            50% { transform: rotate(45deg) scale(1.1); box-shadow: 0 0 80px rgba(230, 57, 70, 0.7); }
+            100% { transform: rotate(45deg) scale(1); box-shadow: 0 0 50px rgba(230, 57, 70, 0.5); }
+        }
+
+        .floating-cells {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cell {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(230, 57, 70, 0.3);
+            border-radius: 50%;
+            animation: move linear infinite;
+        }
+
+        @keyframes move {
+            0% { transform: translate(0, 0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">LifeStream</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/contact">Contact</a></li>
+            {% if session.username %}
+                <li><a href="/logout" style="color: var(--primary);">Logout ({{ session.username }})</a></li>
+            {% else %}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Signup</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="content-left">
+            <h2>Our Mission</h2>
+            <p>LifeStream has been at the forefront of blood donation for over <strong>5 years</strong>. We provide high-quality blood testing and storage, ensuring that every drop counts. Our facility maintains the highest standards of hygiene and efficiency.</p>
+            <p>We handle all major blood groups including A+, B+, AB+, and O (both positive and negative). Our quality control team ensures that the quantity and quality of blood meet medical requirements for surgeries, emergencies, and chronic treatments.</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <h3>5+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10k+</h3>
+                    <p>Happy Donors</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Support</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <h3 style="color: var(--primary); margin-bottom: 20px;">Why Donate?</h3>
+                <ul style="list-style: none; color: #ccc; line-height: 2;">
+                    <li>✓ One donation can save up to three lives.</li>
+                    <li>✓ Reduces the risk of heart disease and cancer.</li>
+                    <li>✓ Helps in maintaining healthy iron levels.</li>
+                    <li>✓ Stimulates the production of new blood cells.</li>
+                </ul>
+            </div>
+
+            <!-- Impact Calculator -->
+            <div style="margin-top: 50px; background: rgba(230, 57, 70, 0.1); padding: 30px; border-radius: 20px; border: 1px solid var(--primary);">
+                <h3 style="color: #fff; margin-bottom: 15px;">Life-Saving Impact Calculator</h3>
+                <p style="font-size: 0.9rem; color: #ccc;">Enter how many times you've donated blood:</p>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <input type="number" id="donationCount" placeholder="0" style="width: 80px; padding: 10px; border-radius: 8px; border: none; outline: none;">
+                    <button onclick="calculateImpact()" style="padding: 10px 20px; background: var(--primary); border: none; color: white; border-radius: 8px; cursor: pointer; font-weight: 600;">Calculate</button>
+                </div>
+                <div id="impactResult" style="margin-top: 20px; font-size: 1.2rem; font-weight: 800; color: var(--primary); display: none;">
+                    🌟 You have potentially saved <span id="livesSaved">0</span> lives!
+                </div>
+            </div>
+        </div>
+
+
+        <div class="animation-right">
+            <div class="blood-drop"></div>
+            <div class="floating-cells" id="cells"></div>
+        </div>
+    </div>
+
+    <script>
+        function calculateImpact() {
+            const count = document.getElementById('donationCount').value;
+            if (count > 0) {
+                document.getElementById('livesSaved').innerText = count * 3;
+                document.getElementById('impactResult').style.display = 'block';
+            }
+        }
+
+        const cellsContainer = document.getElementById('cells');
+        for (let i = 0; i < 20; i++) {
+            const cell = document.createElement('div');
+            cell.className = 'cell';
+            const x = (Math.random() - 0.5) * 400;
+            const y = (Math.random() - 0.5) * 400;
+            cell.style.setProperty('--x', `${x}px`);
+            cell.style.setProperty('--y', `${y}px`);
+            cell.style.left = '50%';
+            cell.style.top = '50%';
+            cell.style.animationDuration = (2 + Math.random() * 3) + 's';
+            cell.style.animationDelay = (Math.random() * 2) + 's';
+            cellsContainer.appendChild(cell);
+        }
+    </script>
+</body>
+</html>
